@@ -266,3 +266,11 @@ textarea.code {
 
 .field input, .field select { width: 100%; }
 .side { overflow-x: hidden; }
+
+.file-chip { font-size: 12px; color: var(--muted); padding: 2px 8px; border: 1px solid var(--line); border-radius: 12px; white-space: nowrap; max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+.file-chip.dirty { color: var(--today); border-color: var(--today); }
+.drop-overlay {
+  position: fixed; inset: 12px; z-index: 150; display: grid; place-items: center; pointer-events: none;
+  border: 3px dashed var(--accent); border-radius: 14px; background: color-mix(in srgb, var(--accent-soft) 70%, transparent);
+  font-size: 18px; font-weight: 600; color: var(--accent);
+}

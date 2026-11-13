@@ -251,8 +251,9 @@ const TAGS = new Set(['done', 'active', 'crit', 'milestone']);
 const KEYWORDS = /^(dateFormat|axisFormat|tickInterval|todayMarker|includes|weekday|weekend|inclusiveEndDates|topAxis|displayMode|accTitle|accDescr|click)\b/;
 
 export function extractMermaid(text) {
-  const m = /```mermaid\s*\n([\s\S]*?)```/.exec(text);
-  return m ? m[1] : text;
+  const blocks = [...text.matchAll(/```mermaid[^\n]*\n([\s\S]*?)```/g)].map((m) => m[1]);
+  if (!blocks.length) return text;
+  return blocks.find((b) => /(^|\n)\s*gantt\b/.test(b)) || blocks[0];
 }
 
 export function fromMermaid(text) {
